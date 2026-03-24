@@ -1,4 +1,5 @@
 cd ../../../project/android
+rm -rf build_64
 mkdir -p build_64
 cd build_64
 ../build_64.sh "\
@@ -9,6 +10,7 @@ cd build_64
 -DMNN_ARM82=true \
 -DMNN_USE_LOGCAT=true \
 -DMNN_OPENCL=true \
+-DMNN_OPENCL_PROFILE=true \
 -DLLM_SUPPORT_VISION=true \
 -DMNN_BUILD_OPENCV=true \
 -DMNN_IMGCODECS=true \
@@ -16,10 +18,10 @@ cd build_64
 -DMNN_BUILD_AUDIO=true \
 -DMNN_BUILD_DIFFUSION=ON \
 -DMNN_SEP_BUILD=OFF \
--DBUILD_PLUGIN=ON \
+-DBUILD_PLUGIN=OFF \
 -DMNN_QNN=OFF \
 -DCMAKE_SHARED_LINKER_FLAGS='-Wl,-z,max-page-size=16384' \
 -DCMAKE_INSTALL_PREFIX=."
 make install
 cd ../../../apps/Android/MnnLlmChat/
-./gradlew assembleStandardDebug
+./gradlew assembleDebug
